@@ -5,144 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lab 02 – Active Directory + AS-REP Roasting | Shawn Belykh</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            max-width: 860px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            line-height: 1.7;
-            color: #1a1a1a;
-            background: #f7f7f7;
-        }
-        nav {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #ddd;
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 40px 20px; line-height: 1.7; color: #1a1a1a; background: #f7f7f7; }
+        nav { text-align: center; margin-bottom: 40px; padding-bottom: 15px; border-bottom: 1px solid #ddd; }
+        nav a { margin: 0 15px; text-decoration: none; color: #333; font-weight: 500; }
         h1 { font-size: 26px; margin-bottom: 8px; }
-        h2 { font-size: 20px; margin-top: 40px; border-bottom: 1px solid #eee; padding-bottom: 6px; }
-        h3 { font-size: 17px; margin-top: 25px; }
-        .meta {
-            color: #666;
-            font-size: 15px;
-            margin-bottom: 30px;
-        }
-        .box {
-            background: white;
-            padding: 25px 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
-        }
-        pre {
-            background: #1e1e1e;
-            color: #d4d4d4;
-            padding: 16px;
-            border-radius: 6px;
-            overflow-x: auto;
-            font-size: 14px;
-        }
-        .tag {
-            display: inline-block;
-            background: #eef2ff;
-            color: #3730a3;
-            font-size: 12px;
-            padding: 3px 10px;
-            border-radius: 20px;
-            margin-right: 6px;
-        }
-        ul { padding-left: 20px; }
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            color: #888;
-            font-size: 14px;
-        }
-        a { color: #0366d6; }
+        h2 { font-size: 20px; margin-top: 45px; border-bottom: 1px solid #eee; padding-bottom: 6px; }
+        h3 { font-size: 17px; margin-top: 28px; }
+        .meta { color: #666; font-size: 15px; margin-bottom: 30px; }
+        .box { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        pre { background: #1e1e1e; color: #d4d4d4; padding: 16px; border-radius: 6px; overflow-x: auto; font-size: 14px; }
+        .screenshot { margin: 25px 0; text-align: center; }
+        .screenshot img { max-width: 100%; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .caption { font-size: 14px; color: #555; margin-top: 8px; }
+        .tag { display: inline-block; background: #eef2ff; color: #3730a3; font-size: 12px; padding: 3px 10px; border-radius: 20px; margin-right: 6px; }
+        footer { text-align: center; margin-top: 50px; color: #888; font-size: 14px; }
     </style>
 </head>
 <body>
+<nav>
+    <a href="index.html">Labs</a>
+    <a href="certificates.html">Certificates</a>
+    <a href="contact.html">Contact</a>
+</nav>
 
-    <nav>
-        <a href="index.html">Labs</a>
-        <a href="certificates.html">Certificates</a>
-        <a href="contact.html">Contact</a>
-    </nav>
+<div class="box">
+    <span class="tag">Active Directory</span>
+    <span class="tag">AS-REP Roasting</span>
+    <span class="tag">Windows Server</span>
 
-    <div class="box">
-        <span class="tag">Active Directory</span>
-        <span class="tag">AS-REP Roasting</span>
-        <span class="tag">Windows Server</span>
+    <h1>Lab 02 – Active Directory Setup + AS-REP Roasting</h1>
+    <p class="meta">Date: July 2026 · Difficulty: Intermediate · Status: Completed</p>
 
-        <h1>Lab 02 – Active Directory Setup + AS-REP Roasting</h1>
-        <p class="meta">Date: July 2026 · Difficulty: Intermediate · Status: Completed</p>
+    <h2>Objective</h2>
+    <p>Build a functional Active Directory environment from scratch and perform a real authentication attack (AS-REP Roasting) against a domain user.</p>
 
-        <h2>Objective</h2>
-        <p>Build a functional Active Directory environment from scratch and perform a real authentication attack (AS-REP Roasting) against a domain user.</p>
+    <h2>Environment</h2>
+    <ul>
+        <li><strong>Domain Controller:</strong> Windows Server 2022 (DC01.lab.local) – 192.168.1.10</li>
+        <li><strong>Domain-joined Client:</strong> Windows 11</li>
+        <li><strong>Attacker:</strong> Kali Linux</li>
+        <li><strong>Domain:</strong> lab.local</li>
+    </ul>
 
-        <h2>Environment</h2>
-        <ul>
-            <li><strong>Domain Controller:</strong> Windows Server 2022 (DC01.lab.local) – 192.168.1.10</li>
-            <li><strong>Domain-joined Client:</strong> Windows 11 (V2)</li>
-            <li><strong>Attacker:</strong> Kali Linux</li>
-            <li><strong>Domain:</strong> lab.local</li>
-        </ul>
+    <h2>Walkthrough</h2>
 
-        <h2>Methodology</h2>
-        <ol>
-            <li>Install and configure Windows Server as a Domain Controller</li>
-            <li>Create domain <code>lab.local</code></li>
-            <li>Join a Windows 11 machine to the domain</li>
-            <li>Create Organizational Unit, users, and security group</li>
-            <li>Configure a user for AS-REP Roasting</li>
-            <li>Execute the attack from Kali using Impacket</li>
-        </ol>
+    <h3>1. Domain Controller Setup & Verification</h3>
 
-        <h2>Walkthrough</h2>
-
-        <h3>1. Domain Controller Setup</h3>
-        <p>Installed Windows Server 2022, assigned static IP 192.168.1.10, promoted the server to a Domain Controller, and created the forest root domain <strong>lab.local</strong>.</p>
-
-        <h3>2. Domain Join</h3>
-        <p>Configured a Windows 11 machine with DNS pointing to the Domain Controller and successfully joined it to <code>lab.local</code>.</p>
-
-        <h3>3. Active Directory Objects</h3>
-        <ul>
-            <li>Created OU: <code>LabUsers</code></li>
-            <li>Created users: Alice Admin and Bob User</li>
-            <li>Created security group: Lab-Admins</li>
-            <li>Added Alice to Lab-Admins</li>
-        </ul>
-
-        <h3>4. AS-REP Roasting</h3>
-        <p>Configured Bob with “Do not require Kerberos preauthentication” and executed the attack:</p>
-        <pre>impacket-GetNPUsers lab.local/bob -no-pass -dc-ip 192.168.1.10</pre>
-        <p>Successfully retrieved Bob’s AS-REP hash.</p>
-
-        <h2>Results</h2>
-        <ul>
-            <li>Fully functional Active Directory domain created</li>
-            <li>Windows 11 client successfully domain-joined</li>
-            <li>AS-REP Roasting attack completed with valid hash obtained</li>
-        </ul>
-
-        <h2>Tools Used</h2>
-        <p>Oracle VirtualBox · Windows Server 2022 · Windows 11 · Kali Linux · Impacket · Active Directory Users and Computers</p>
-
-        <h2>Lessons Learned</h2>
-        <p>Building Active Directory from scratch provides deep understanding of domain structure, authentication, and common misconfigurations. AS-REP Roasting demonstrated how a single account setting can expose credentials to offline cracking.</p>
+    <div class="screenshot">
+        <img src="images/Screenshot 2026-07-28 142216.jpg" alt="Server Manager">
+        <p class="caption">Server Manager – AD DS role installed</p>
     </div>
 
-    <footer>
-        <a href="index.html">← Back to Labs</a>
-    </footer>
+    <div class="screenshot">
+        <img src="images/Screenshot 2026-07-28 142704.jpg" alt="AD DS view">
+        <p class="caption">AD DS role confirmed on DC01</p>
+    </div>
 
+    <div class="screenshot">
+        <img src="images/Screenshot 2026-07-28 142752.jpg" alt="System Properties">
+        <p class="caption">System Properties – DC01.lab.local</p>
+    </div>
+
+    <div class="screenshot">
+        <img src="images/Screenshot 2026-07-28 142939.jpg" alt="PowerShell domain check">
+        <p class="caption">PowerShell confirmation of domain lab.local</p>
+    </div>
+
+    <div class="screenshot">
+        <img src="images/Screenshot 2026-07-28 143026.jpg" alt="ipconfig">
+        <p class="caption">ipconfig /all – DC01 network configuration</p>
+    </div>
+
+    <h3>2. Domain Join & Active Directory Objects</h3>
+    <p>Windows 11 successfully joined to the domain. Created LabUsers OU, users Alice Admin & Bob User, and the Lab-Admins security group.</p>
+
+    <!-- Add remaining key screenshots here once uploaded:
+         - Windows 11 System Properties (domain joined)
+         - ADUC with Alice, Bob, Lab-Admins
+         - Lab-Admins Members tab
+         - Bob Account tab (Do not require Kerberos preauthentication)
+    -->
+
+    <h3>3. AS-REP Roasting</h3>
+    <p>Configured Bob without Kerberos preauthentication and successfully retrieved the AS-REP hash using Impacket.</p>
+
+    <!-- Add the successful Impacket hash screenshot here -->
+
+    <h2>Results</h2>
+    <ul>
+        <li>Fully functional Active Directory domain created</li>
+        <li>Windows 11 client successfully domain-joined</li>
+        <li>Users, OU, and security group created</li>
+        <li>AS-REP Roasting attack completed with valid hash obtained</li>
+    </ul>
+
+    <h2>Tools Used</h2>
+    <p>Oracle VirtualBox · Windows Server 2022 · Windows 11 · Kali Linux · Impacket · Active Directory Users and Computers</p>
+
+    <h2>Lessons Learned</h2>
+    <p>Building Active Directory from the ground up provides deep understanding of domain structure and authentication. AS-REP Roasting demonstrated how a single account misconfiguration can expose credentials to offline attacks.</p>
+</div>
+
+<footer><a href="index.html">← Back to Labs</a></footer>
 </body>
 </html>
