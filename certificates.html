@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            max-width: 820px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 40px 20px;
             line-height: 1.6;
@@ -37,15 +37,26 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
+            margin-bottom: 30px;
+            text-align: center;
         }
         .cert h2 {
             margin-top: 0;
             color: #b91c1c;
         }
+        .cert img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
         .meta {
             color: #555;
             font-size: 15px;
+            text-align: left;
+            max-width: 500px;
+            margin: 0 auto;
         }
         footer {
             text-align: center;
@@ -67,13 +78,18 @@
 
     <div class="cert">
         <h2>CompTIA Security+</h2>
-        <p class="meta">
-            <strong>Issued:</strong> January 12, 2026<br>
-            <strong>Expires:</strong> January 12, 2029<br>
-            <strong>Candidate ID:</strong> COMP001022967468<br>
-            <strong>Exam:</strong> SY0-701
-        </p>
-        <p>Successfully completed the requirements to be recognized as CompTIA Security+ Certified.</p>
+        
+        <!-- This is where the certificate image will appear -->
+        <img src="securityplus-certificate.jpg" alt="CompTIA Security+ Certificate - Shawn Belykh">
+
+        <div class="meta">
+            <p>
+                <strong>Issued:</strong> January 12, 2026<br>
+                <strong>Expires:</strong> January 12, 2029<br>
+                <strong>Candidate ID:</strong> COMP001022967468<br>
+                <strong>Exam Code:</strong> SY0-701
+            </p>
+        </div>
     </div>
 
     <footer>
