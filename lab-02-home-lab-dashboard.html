@@ -16,9 +16,7 @@
             --amber: #d97706;
             --gray: #9ca3af;
         }
-
         * { box-sizing: border-box; }
-
         body {
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -26,13 +24,11 @@
             color: var(--text);
             line-height: 1.5;
         }
-
         .wrap {
             max-width: 1100px;
             margin: 0 auto;
             padding: 28px 20px 50px;
         }
-
         nav {
             display: flex;
             gap: 18px;
@@ -40,43 +36,27 @@
             padding-bottom: 14px;
             border-bottom: 1px solid var(--line);
         }
-
         nav a {
             text-decoration: none;
             color: var(--muted);
             font-weight: 500;
             font-size: 14px;
         }
-
         nav a:hover { color: var(--text); }
-
-        .hero {
-            margin-bottom: 28px;
-        }
-
-        .hero h1 {
-            margin: 0 0 8px;
-            font-size: 30px;
-        }
-
-        .hero p {
-            margin: 0;
-            color: var(--muted);
-        }
-
+        .hero { margin-bottom: 28px; }
+        .hero h1 { margin: 0 0 8px; font-size: 30px; }
+        .hero p { margin: 0; color: var(--muted); }
         .grid {
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 20px;
         }
-
         .cards {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 16px;
             margin-bottom: 20px;
         }
-
         .card {
             background: var(--card);
             border: 1px solid var(--line);
@@ -84,18 +64,8 @@
             padding: 18px;
             box-shadow: 0 1px 2px rgba(0,0,0,0.03);
         }
-
-        .card h3 {
-            margin: 0 0 8px;
-            font-size: 16px;
-        }
-
-        .card p {
-            margin: 0;
-            color: var(--muted);
-            font-size: 14px;
-        }
-
+        .card h3 { margin: 0 0 8px; font-size: 16px; }
+        .card p { margin: 0; color: var(--muted); font-size: 14px; }
         .status {
             display: inline-block;
             margin-top: 12px;
@@ -104,26 +74,10 @@
             font-size: 12px;
             font-weight: 600;
         }
-
-        .done {
-            background: #dcfce7;
-            color: var(--green);
-        }
-
-        .progress {
-            background: #fef3c7;
-            color: var(--amber);
-        }
-
-        .planned {
-            background: #f3f4f6;
-            color: var(--gray);
-        }
-
-        .labs .card {
-            margin-bottom: 14px;
-        }
-
+        .done { background: #dcfce7; color: var(--green); }
+        .progress { background: #fef3c7; color: var(--amber); }
+        .planned { background: #f3f4f6; color: var(--gray); }
+        .labs .card { margin-bottom: 14px; }
         .labs a {
             display: inline-block;
             margin-top: 12px;
@@ -133,22 +87,15 @@
             font-weight: 500;
             font-size: 14px;
         }
-
-        .side .card + .card {
-            margin-top: 16px;
-        }
-
+        .side .card + .card { margin-top: 16px; }
         .list {
             margin: 10px 0 0;
             padding-left: 18px;
             color: var(--muted);
             font-size: 14px;
         }
-
         @media (max-width: 860px) {
-            .grid, .cards {
-                grid-template-columns: 1fr;
-            }
+            .grid, .cards { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -168,12 +115,12 @@
         <div class="cards">
             <div class="card">
                 <h3>Completed Labs</h3>
-                <p>Help Desk, Active Directory, Metasploitable</p>
-                <span class="status done" id="completedCount">3 Complete</span>
+                <p>Help Desk, Dashboard, Active Directory, Metasploitable</p>
+                <span class="status done" id="completedCount">4 Complete</span>
             </div>
             <div class="card">
                 <h3>Current Focus</h3>
-                <p>Home Lab Dashboard buildout</p>
+                <p>Kerberoasting + BloodHound</p>
                 <span class="status progress" id="focusStatus">In Progress</span>
             </div>
             <div class="card">
@@ -183,7 +130,7 @@
             </div>
             <div class="card">
                 <h3>Next Up</h3>
-                <p>Offensive progression labs</p>
+                <p>Windows Privilege Escalation</p>
                 <span class="status planned" id="nextStatus">Planned</span>
             </div>
         </div>
@@ -193,27 +140,29 @@
                 <div class="card">
                     <h3>Lab 01 – Active Directory Help Desk Operations</h3>
                     <p>Account recovery, group-based share access, and user lifecycle tasks in lab.local.</p>
-                    <span class="status" id="status-helpdesk">Completed</span>
+                    <span class="status done" id="status-helpdesk">Completed</span>
                     <a href="lab-01-helpdesk-operations.html">Open write-up →</a>
                 </div>
+
                 <div class="card">
                     <h3>Lab 02 – Home Lab Dashboard</h3>
                     <p>Built a personal dashboard to track lab progress, environment status, and documentation from one clean interface.</p>
-                    <span class="status" id="status-helpdesk">Completed</span>
-                    <a href="lab-02-home-lab-dashboard.html">Open write-up →</a>
+                    <span class="status done" id="status-dashboard">Completed</span>
+                    <a href="lab-02-home-lab-dashboard.html">Open dashboard →</a>
                 </div>
+
                 <div class="card">
                     <h3>Lab 03 – Active Directory + AS-REP Roasting</h3>
                     <p>Domain build and authentication attack against a misconfigured account.</p>
-                    <span class="status" id="status-asrep">Completed</span>
-                    <a href="lab-02-active-directory.html">Open write-up →</a>
+                    <span class="status done" id="status-asrep">Completed</span>
+                    <a href="lab-03-active-directory.html">Open write-up →</a>
                 </div>
 
                 <div class="card">
                     <h3>Lab 04 – Metasploitable Exploitation</h3>
                     <p>Full attack chain from initial access to root post-exploitation.</p>
-                    <span class="status" id="status-metasploitable">Completed</span>
-                    <a href="lab-03-metasploitable.html">Open write-up →</a>
+                    <span class="status done" id="status-metasploitable">Completed</span>
+                    <a href="lab-04-metasploitable.html">Open write-up →</a>
                 </div>
             </div>
 
@@ -242,12 +191,12 @@
     </div>
 
     <script>
-        // Manual status control panel
         const labStatus = {
             helpdesk: "completed",
+            dashboard: "completed",
             asrep: "completed",
             metasploitable: "completed",
-            dashboard: "in-progress",
+            focus: "in-progress",
             next: "planned"
         };
 
@@ -270,15 +219,15 @@
             el.textContent = statusText(value);
         }
 
-        // Apply lab statuses
         applyStatus("status-helpdesk", labStatus.helpdesk);
+        applyStatus("status-dashboard", labStatus.dashboard);
         applyStatus("status-asrep", labStatus.asrep);
         applyStatus("status-metasploitable", labStatus.metasploitable);
-        applyStatus("focusStatus", labStatus.dashboard);
+        applyStatus("focusStatus", labStatus.focus);
         applyStatus("nextStatus", labStatus.next);
 
-        // Completed count
-        const completed = Object.values(labStatus).filter(v => v === "completed").length;
+        const completed = ["helpdesk", "dashboard", "asrep", "metasploitable"]
+            .filter(k => labStatus[k] === "completed").length;
         document.getElementById("completedCount").textContent = completed + " Complete";
     </script>
 </body>
