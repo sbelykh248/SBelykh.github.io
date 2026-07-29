@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Lab Dashboard | Shawn Belykh</title>
+    <style>
+        :root {
+            --bg: #f4f5f7;
+            --card: #ffffff;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --line: #e5e7eb;
+            --accent: #2563eb;
+            --green: #16a34a;
+            --amber: #d97706;
+            --gray: #9ca3af;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 28px 20px 50px;
+        }
+
+        nav {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 28px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--muted);
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        nav a:hover { color: var(--text); }
+
+        .hero {
+            margin-bottom: 28px;
+        }
+
+        .hero h1 {
+            margin: 0 0 8px;
+            font-size: 30px;
+        }
+
+        .hero p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 18px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        .card h3 {
+            margin: 0 0 8px;
+            font-size: 16px;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .done {
+            background: #dcfce7;
+            color: var(--green);
+        }
+
+        .progress {
+            background: #fef3c7;
+            color: var(--amber);
+        }
+
+        .planned {
+            background: #f3f4f6;
+            color: var(--gray);
+        }
+
+        .labs .card {
+            margin-bottom: 14px;
+        }
+
+        .labs a {
+            display: inline-block;
+            margin-top: 12px;
+            margin-left: 8px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .side .card + .card {
+            margin-top: 16px;
+        }
+
+        .list {
+            margin: 10px 0 0;
+            padding-left: 18px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        @media (max-width: 860px) {
+            .grid, .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <nav>
+            <a href="index.html">Labs</a>
+            <a href="certificates.html">Certificates</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="hero">
+            <h1>Home Lab Dashboard</h1>
+            <p>Personal control panel for lab progress, environment status, and documentation.</p>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Completed Labs</h3>
+                <p>Help Desk, Active Directory, Metasploitable</p>
+                <span class="status done" id="completedCount">3 Complete</span>
+            </div>
+            <div class="card">
+                <h3>Current Focus</h3>
+                <p>Home Lab Dashboard buildout</p>
+                <span class="status progress" id="focusStatus">In Progress</span>
+            </div>
+            <div class="card">
+                <h3>Environment</h3>
+                <p>DC01 · Windows 11 · Kali</p>
+                <span class="status done">Online Setup</span>
+            </div>
+            <div class="card">
+                <h3>Next Up</h3>
+                <p>Offensive progression labs</p>
+                <span class="status planned" id="nextStatus">Planned</span>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="labs">
+                <div class="card">
+                    <h3>Lab 01 – Active Directory Help Desk Operations</h3>
+                    <p>Account recovery, group-based share access, and user lifecycle tasks in lab.local.</p>
+                    <span class="status" id="status-helpdesk">Completed</span>
+                    <a href="lab-01-helpdesk-operations.html">Open write-up →</a>
+                </div>
+                <div class="card">
+                    <h3>Lab 02 – Home Lab Dashboard</h3>
+                    <p>Built a personal dashboard to track lab progress, environment status, and documentation from one clean interface.</p>
+                    <span class="status" id="status-helpdesk">Completed</span>
+                    <a href="lab-02-home-lab-dashboard.html">Open write-up →</a>
+                </div>
+                <div class="card">
+                    <h3>Lab 03 – Active Directory + AS-REP Roasting</h3>
+                    <p>Domain build and authentication attack against a misconfigured account.</p>
+                    <span class="status" id="status-asrep">Completed</span>
+                    <a href="lab-02-active-directory.html">Open write-up →</a>
+                </div>
+
+                <div class="card">
+                    <h3>Lab 04 – Metasploitable Exploitation</h3>
+                    <p>Full attack chain from initial access to root post-exploitation.</p>
+                    <span class="status" id="status-metasploitable">Completed</span>
+                    <a href="lab-03-metasploitable.html">Open write-up →</a>
+                </div>
+            </div>
+
+            <div class="side">
+                <div class="card">
+                    <h3>Lab Environment</h3>
+                    <ul class="list">
+                        <li>DC01.lab.local</li>
+                        <li>Windows 11 client</li>
+                        <li>Kali Linux attacker</li>
+                        <li>VirtualBox network</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Working Notes</h3>
+                    <ul class="list">
+                        <li>Keep write-ups concise</li>
+                        <li>Only strong screenshots</li>
+                        <li>Maintain project lineage</li>
+                        <li>Prioritize clarity over volume</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Manual status control panel
+        const labStatus = {
+            helpdesk: "completed",
+            asrep: "completed",
+            metasploitable: "completed",
+            dashboard: "in-progress",
+            next: "planned"
+        };
+
+        function statusClass(value) {
+            if (value === "completed") return "done";
+            if (value === "in-progress") return "progress";
+            return "planned";
+        }
+
+        function statusText(value) {
+            if (value === "completed") return "Completed";
+            if (value === "in-progress") return "In Progress";
+            return "Planned";
+        }
+
+        function applyStatus(id, value) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.className = "status " + statusClass(value);
+            el.textContent = statusText(value);
+        }
+
+        // Apply lab statuses
+        applyStatus("status-helpdesk", labStatus.helpdesk);
+        applyStatus("status-asrep", labStatus.asrep);
+        applyStatus("status-metasploitable", labStatus.metasploitable);
+        applyStatus("focusStatus", labStatus.dashboard);
+        applyStatus("nextStatus", labStatus.next);
+
+        // Completed count
+        const completed = Object.values(labStatus).filter(v => v === "completed").length;
+        document.getElementById("completedCount").textContent = completed + " Complete";
+    </script>
+</body>
+</html>
