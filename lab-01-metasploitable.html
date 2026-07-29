@@ -27,7 +27,7 @@
             font-weight: 500;
         }
         h1 { font-size: 26px; margin-bottom: 8px; }
-        h2 { font-size: 20px; margin-top: 45px; border-bottom: 1px solid #eee; padding-bottom: 6px; }
+        h2 { font-size: 20px; margin-top: 40px; border-bottom: 1px solid #eee; padding-bottom: 6px; }
         h3 { font-size: 17px; margin-top: 28px; }
         .meta { color: #666; font-size: 15px; margin-bottom: 30px; }
         .box {
@@ -68,6 +68,7 @@
     </style>
 </head>
 <body>
+
 <nav>
     <a href="index.html">Labs</a>
     <a href="certificates.html">Certificates</a>
@@ -79,71 +80,59 @@
     <span class="tag">Metasploit</span>
     <span class="tag">Post-Exploitation</span>
 
-    <h1>Lab 01 – Metasploitable 2 Exploitation & Post-Exploitation</h1>
-    <p class="meta">Date: July 2026 · Difficulty: Beginner–Intermediate · Status: Completed</p>
+    <h1>Lab 01 – Metasploitable Exploitation</h1>
+    <p class="meta">July 2026</p>
 
     <h2>Objective</h2>
-    <p>Perform a complete offensive attack chain against Metasploitable 2 — from environment setup and reconnaissance to successful exploitation and post-exploitation, obtaining a root-level Meterpreter session.</p>
+    <p>Build a basic offensive lab and complete a full attack chain against Metasploitable 2, from initial access to root-level post-exploitation.</p>
 
     <h2>Environment</h2>
     <ul>
-        <li><strong>Attacker:</strong> Kali Linux 2026.2</li>
-        <li><strong>Target:</strong> Metasploitable 2</li>
-        <li><strong>Hypervisor:</strong> Oracle VirtualBox</li>
-        <li><strong>Network:</strong> Bridged Adapter</li>
+        <li>Attacker: Kali Linux</li>
+        <li>Target: Metasploitable 2</li>
+        <li>Platform: Oracle VirtualBox</li>
+        <li>Network: Bridged</li>
     </ul>
 
     <div class="screenshot">
-        <img src="images/Screenshot 2026-07-27 133402.jpg" alt="Kali Linux running">
-        <p class="caption">Kali Linux environment running in VirtualBox</p>
+        <img src="images/Screenshot 2026-07-27 133402.jpg" alt="Kali Linux">
+        <p class="caption">Kali Linux environment</p>
     </div>
 
-    <h2>Walkthrough</h2>
-
-    <h3>1. Web Server Setup</h3>
-    <p>Installed Apache and replaced the default page with a custom lab banner.</p>
+    <h2>What was done</h2>
+    <p>Set up both machines on the same network. Verified basic connectivity and ran service discovery against the target. Identified the UnrealIRCd service and used the corresponding Metasploit module to exploit it.</p>
 
     <div class="screenshot">
         <img src="images/Screenshot 2026-07-27 134621.jpg" alt="Apache default page">
-        <p class="caption">Apache default page</p>
+        <p class="caption">Apache running on Kali</p>
     </div>
 
     <div class="screenshot">
         <img src="images/Screenshot 2026-07-27 141614.jpg" alt="Custom lab page">
-        <p class="caption">Custom “Shawn’s Cybersecurity Home Lab” page</p>
+        <p class="caption">Custom lab page</p>
     </div>
 
-    <h3>2. Network Traffic Capture</h3>
-    <p>Captured live traffic using both Wireshark and tcpdump.</p>
+    <p>The exploit returned a root Meterpreter session. From there, basic post-exploitation was performed — system info, user enumeration, and dumping local password hashes.</p>
 
     <div class="screenshot">
-        <img src="images/Screenshot 2026-07-27 143856.jpg" alt="Wireshark capture">
-        <p class="caption">Wireshark live packet capture</p>
+        <img src="images/Screenshot 2026-07-27 143856.jpg" alt="Wireshark">
+        <p class="caption">Traffic capture during the lab</p>
     </div>
 
-    <div class="screenshot">
-        <img src="images/Screenshot 2026-07-27 143947.jpg" alt="tcpdump output">
-        <p class="caption">tcpdump packet capture</p>
-    </div>
-
-    <h3>3. Exploitation & Post-Exploitation</h3>
-    <p>Exploited the UnrealIRCd backdoor with Metasploit, obtained a root Meterpreter session, and performed post-exploitation (system info, hash dumping).</p>
-
-    <h2>Results</h2>
+    <h2>Result</h2>
     <ul>
-        <li>Successfully set up isolated lab environment</li>
-        <li>Captured live network traffic</li>
-        <li>Obtained root-level Meterpreter session</li>
-        <li>Performed post-exploitation enumeration and hash dumping</li>
+        <li>Root access obtained via UnrealIRCd</li>
+        <li>Meterpreter session established</li>
+        <li>Local hashes recovered</li>
     </ul>
 
-    <h2>Tools Used</h2>
-    <p>Oracle VirtualBox · Kali Linux · Metasploitable 2 · Apache · Wireshark · tcpdump · Metasploit Framework</p>
-
-    <h2>Lessons Learned</h2>
-    <p>This lab reinforced proper lab network configuration, traffic analysis, and the full offensive workflow from initial access to post-exploitation.</p>
+    <h2>Notes</h2>
+    <p>Metasploitable is intentionally vulnerable, but the process still matters. The value here is getting comfortable with the full flow: recon → exploitation → post-exploitation.</p>
 </div>
 
-<footer><a href="index.html">← Back to Labs</a></footer>
+<footer>
+    <a href="index.html">← Back to Labs</a>
+</footer>
+
 </body>
 </html>
