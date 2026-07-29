@@ -4,68 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shawn Belykh | Cybersecurity Labs</title>
-    <style>/* ========== Apple-style smooth hover effects ========== */
-
-a, .lab, .tag, nav a {
-    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-/* Navigation links */
-nav a {
-    position: relative;
-    padding: 4px 2px;
-}
-
-nav a:hover {
-    color: #000;
-    opacity: 0.85;
-}
-
-/* Soft underline animation */
-nav a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 1.5px;
-    bottom: 0;
-    left: 0;
-    background-color: #111;
-    transition: width 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-nav a:hover::after {
-    width: 100%;
-}
-
-/* Lab cards */
-.lab {
-    transition: all 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-.lab:hover {
-    transform: translateY(-5px) scale(1.015);
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.09);
-}
-
-/* "Read full lab" links */
-.lab a {
-    display: inline-block;
-}
-
-.lab a:hover {
-    transform: translateX(5px);
-    color: #0056b3;
-}
-
-/* Tags */
-.tag {
-    transition: all 0.25s ease;
-}
-
-.tag:hover {
-    transform: scale(1.06);
-    background: #e0e7ff;
-}
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f7f7f7;
+        }
+        nav {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #ddd;
+        }
+        nav a {
+            margin: 0 18px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        nav a:hover {
+            color: #000;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 8px;
+            font-size: 28px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 16px;
+        }
+        .lab {
+            background: white;
+            padding: 28px;
+            margin-bottom: 24px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .lab h2 {
+            margin: 0 0 12px 0;
+            font-size: 20px;
+        }
+        .lab p {
+            margin: 0 0 16px 0;
+            color: #444;
+        }
+        .lab a {
+            color: #0366d6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .tag {
+            display: inline-block;
+            background: #eef2ff;
+            color: #3730a3;
+            font-size: 12px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-right: 6px;
+            margin-bottom: 10px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #888;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
