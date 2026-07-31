@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Shawn Belykh</title>
+    <style>
+        :root {
+            --bg: #f5f7fb;
+            --card: #ffffff;
+            --text: #152033;
+            --muted: #5f6b7a;
+            --line: #e6ebf2;
+            --accent: #2f6fed;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .page {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 28px 20px 60px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 22px;
+            padding-bottom: 16px;
+            margin-bottom: 28px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        nav a:hover { color: var(--text); }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 34px;
+            box-shadow: 0 8px 24px rgba(16, 24, 40, 0.04);
+        }
+
+        h1 {
+            margin: 0 0 10px;
+            font-size: 32px;
+        }
+
+        .lead {
+            color: var(--muted);
+            font-size: 17px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin: 26px 0 10px;
+            font-size: 18px;
+            padding-left: 12px;
+            border-left: 3px solid var(--accent);
+        }
+
+        p { margin: 0 0 14px; }
+
+        ul {
+            margin: 0 0 8px;
+            padding-left: 18px;
+        }
+
+        li { margin-bottom: 6px; }
+
+        .facts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .fact {
+            background: #f8fbff;
+            border: 1px solid #dbe7ff;
+            border-radius: 12px;
+            padding: 14px;
+        }
+
+        .fact strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 13px;
+            color: #2b4bb5;
+        }
+
+        .fact span {
+            font-size: 14px;
+        }
+
+        footer {
+            margin-top: 28px;
+            text-align: center;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        @media (max-width: 700px) {
+            .facts { grid-template-columns: 1fr; }
+            h1 { font-size: 28px; }
+            .card { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <nav>
+        <a href="index.html">Labs</a>
+        <a href="certificate.html">Certificate</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+    </nav>
+
+    <div class="card">
+        <h1>About</h1>
+        <p class="lead">
+            Computer Science senior graduating December 2026, focused on securing and monitoring systems.
+        </p>
+
+        <p>
+            My coursework built a foundation in how systems are designed. My lab work focuses on how they are
+            secured, administered, and investigated. I hold CompTIA Security+ and document practical case studies
+            in Active Directory, access control, and controlled security environments.
+        </p>
+
+        <h2>Education</h2>
+        <ul>
+            <li><strong>Brooklyn College</strong> — B.S. Computer Science, expected December 2026</li>
+            <li><strong>Kingsborough Community College</strong> — A.S. Computer Science, June 2023</li>
+            <li>Relevant coursework: Information Security, Operating Systems, Data Structures</li>
+        </ul>
+
+        <h2>Certification</h2>
+        <ul>
+            <li>CompTIA Security+ CE — January 2026</li>
+        </ul>
+
+        <h2>Focus areas</h2>
+        <ul>
+            <li>Active Directory and access control</li>
+            <li>Windows administration and log analysis</li>
+            <li>Vulnerability and identity fundamentals</li>
+            <li>Hands-on virtual lab documentation</li>
+        </ul>
+
+        <h2>Target roles</h2>
+        <ul>
+            <li>Internship or entry-level cybersecurity support</li>
+            <li>Help Desk / IT Support roles with security exposure</li>
+            <li>Path toward SOC and security operations</li>
+        </ul>
+
+        <h2>Quick facts</h2>
+        <div class="facts">
+            <div class="fact">
+                <strong>Location</strong>
+                <span>Brooklyn, New York</span>
+            </div>
+            <div class="fact">
+                <strong>Graduation</strong>
+                <span>December 2026</span>
+            </div>
+            <div class="fact">
+                <strong>Certification</strong>
+                <span>CompTIA Security+</span>
+            </div>
+            <div class="fact">
+                <strong>Portfolio</strong>
+                <span>Published home-lab case studies</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <a href="index.html">← Back to Labs</a>
+    </footer>
+</div>
+</body>
+</html>
