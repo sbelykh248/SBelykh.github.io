@@ -5,127 +5,215 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shawn Belykh | Cybersecurity Labs</title>
     <style>
+        :root {
+            --bg: #f5f7fb;
+            --card: #ffffff;
+            --text: #152033;
+            --muted: #5f6b7a;
+            --line: #e6ebf2;
+            --accent: #2f6fed;
+            --soft: #eef4ff;
+        }
+
+        * { box-sizing: border-box; }
+
         body {
+            margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            max-width: 860px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
-            color: #1a1a1a;
-            background: #f7f7f7;
         }
+
+        .page {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 28px 20px 60px;
+        }
+
         nav {
-            text-align: center;
-            margin-bottom: 50px;
-            padding-bottom: 18px;
-            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: center;
+            gap: 22px;
+            padding-bottom: 16px;
+            margin-bottom: 34px;
+            border-bottom: 1px solid var(--line);
         }
+
         nav a {
-            margin: 0 18px;
             text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            font-size: 15px;
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.2s ease;
         }
-        nav a:hover { color: #000; }
-        h1 {
+
+        nav a:hover { color: var(--text); }
+
+        header {
             text-align: center;
-            margin-bottom: 8px;
-            font-size: 28px;
+            margin-bottom: 34px;
         }
-        .subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 50px;
+
+        header h1 {
+            margin: 0 0 8px;
+            font-size: 34px;
+        }
+
+        header p {
+            margin: 0 auto;
+            max-width: 620px;
+            color: var(--muted);
             font-size: 16px;
         }
-        .lab {
-            background: white;
-            padding: 28px;
-            margin-bottom: 24px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+
+        .lab-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            margin-bottom: 18px;
         }
+
+        .lab {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: 0 8px 24px rgba(16, 24, 40, 0.04);
+            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+            cursor: pointer;
+        }
+
+        .lab-link:hover .lab {
+            transform: translateY(-4px) scale(1.015);
+            box-shadow: 0 14px 34px rgba(16, 24, 40, 0.10);
+            border-color: #d7e2f5;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .tag {
+            background: var(--soft);
+            color: #2b4bb5;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 5px 10px;
+            border-radius: 999px;
+            transition: transform 0.18s ease, background 0.18s ease;
+        }
+
+        .lab-link:hover .tag {
+            transform: translateY(-1px);
+            background: #e4edff;
+        }
+
+        .level {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: #8090a3;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
         .lab h2 {
-            margin: 0 0 12px 0;
+            margin: 0 0 10px;
             font-size: 20px;
         }
+
         .lab p {
-            margin: 0 0 16px 0;
-            color: #444;
+            margin: 0;
+            color: #4b5870;
         }
-        .lab a {
-            color: #0366d6;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .tag {
-            display: inline-block;
-            background: #eef2ff;
-            color: #3730a3;
-            font-size: 12px;
-            padding: 3px 10px;
-            border-radius: 20px;
-            margin-right: 6px;
-            margin-bottom: 10px;
-        }
+
         footer {
             text-align: center;
-            margin-top: 60px;
-            color: #888;
+            margin-top: 40px;
+            color: #8090a3;
             font-size: 14px;
+        }
+
+        @media (max-width: 700px) {
+            header h1 { font-size: 28px; }
+            .lab { padding: 20px; }
         }
     </style>
 </head>
 <body>
-
+<div class="page">
     <nav>
         <a href="index.html">Labs</a>
         <a href="certificate.html">Certificate</a>
         <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
     </nav>
 
-    <h1>Shawn Belykh</h1>
-    <p class="subtitle">Practical labs in Active Directory, support operations, and offensive security</p>
+    <header>
+        <h1>Shawn Belykh</h1>
+        <p>Hands-on case studies in Active Directory, support operations, and foundational security practice.</p>
+    </header>
 
-    <div class="lab">
-        <span class="tag">Active Directory</span>
-        <span class="tag">Help Desk</span>
-        <span class="tag">Access Control</span>
-        <h2>Lab 01 – Active Directory Help Desk Operations</h2>
-        <p>Performed standard support tasks in an existing domain, including password recovery, group-based share access, and user onboarding.</p>
-        <a href="lab-01-helpdesk-operations.html">Read full lab →</a>
-    </div>
+    <a class="lab-link" href="lab-01-helpdesk-operations.html">
+        <div class="lab">
+            <div class="tags">
+                <span class="tag">Active Directory</span>
+                <span class="tag">Help Desk</span>
+                <span class="tag">Access Control</span>
+            </div>
+            <div class="level">Foundational</div>
+            <h2>Lab 01 – Active Directory Help Desk Operations</h2>
+            <p>Case study on password recovery, group-based permissions, and allow/deny validation inside a live domain environment.</p>
+        </div>
+    </a>
 
-     <div class="lab">
-        <span class="tag">Web</span>
-        <span class="tag">Home Lab</span>
-        <span class="tag">Portfolio</span>
-        <h2>Lab 02 – Home Lab Dashboard</h2>
-        <p>Built a personal dashboard to track lab progress, environment status, and documentation from one clean interface.</p>
-        <a href="lab-02-home-lab-dashboard.html">Open dashboard →</a>
-    </div>
+    <a class="lab-link" href="lab-02-home-lab-dashboard.html">
+        <div class="lab">
+            <div class="tags">
+                <span class="tag">Web</span>
+                <span class="tag">Home Lab</span>
+                <span class="tag">Portfolio</span>
+            </div>
+            <div class="level">Foundational</div>
+            <h2>Lab 02 – Home Lab Dashboard</h2>
+            <p>Personal control panel for tracking lab progress, environment status, and documentation across the home lab.</p>
+        </div>
+    </a>
 
-    <div class="lab">
-        <span class="tag">Active Directory</span>
-        <span class="tag">AS-REP Roasting</span>
-        <h2>Lab 03 – Active Directory + AS-REP Roasting</h2>
-        <p>Built a working Active Directory environment and completed a practical AS-REP Roasting attack.</p>
-        <a href="lab-03-active-directory.html">Read full lab →</a>
-    </div>
+    <a class="lab-link" href="lab-03-active-directory.html">
+        <div class="lab">
+            <div class="tags">
+                <span class="tag">Active Directory</span>
+                <span class="tag">AS-REP Roasting</span>
+                <span class="tag">Identity Security</span>
+            </div>
+            <div class="level">Intermediate</div>
+            <h2>Lab 03 – Active Directory + AS-REP Roasting</h2>
+            <p>Domain construction and credential exposure case study based on a weak Kerberos pre-authentication setting.</p>
+        </div>
+    </a>
 
-    <div class="lab">
-        <span class="tag">Linux</span>
-        <span class="tag">Metasploit</span>
-        <span class="tag">Post-Exploitation</span>
-        <h2>Lab 04 – Metasploitable Exploitation</h2>
-        <p>Completed a full attack chain against Metasploitable 2 from initial access to root post-exploitation.</p>
-        <a href="lab-04-metasploitable.html">Read full lab →</a>
-    </div>
+    <a class="lab-link" href="lab-04-metasploitable.html">
+        <div class="lab">
+            <div class="tags">
+                <span class="tag">Linux</span>
+                <span class="tag">Metasploit</span>
+                <span class="tag">Post-Exploitation</span>
+            </div>
+            <div class="level">Intermediate</div>
+            <h2>Lab 04 – Metasploitable Exploitation</h2>
+            <p>Controlled offensive case study covering discovery, exploitation, session control, and post-access collection.</p>
+        </div>
+    </a>
 
     <footer>
         Practical lab documentation
     </footer>
-
+</div>
 </body>
 </html>
