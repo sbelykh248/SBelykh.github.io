@@ -6,15 +6,16 @@
     <title>Home Lab Dashboard | Shawn Belykh</title>
     <style>
         :root {
-            --bg: #f4f5f7;
-            --card: #ffffff;
-            --text: #1f2937;
-            --muted: #6b7280;
-            --line: #e5e7eb;
-            --accent: #2563eb;
-            --green: #16a34a;
-            --amber: #d97706;
-            --gray: #9ca3af;
+            --bg: #0b0f19;
+            --card: #151b28;
+            --text: #e6edf3;
+            --muted: #8b949e;
+            --line: #21262d;
+            --accent: #3b82f6;
+            --soft: #1e2a45;
+            --green: #22c55e;
+            --amber: #f59e0b;
+            --gray: #6b7280;
         }
         * { box-sizing: border-box; }
         body {
@@ -31,21 +32,31 @@
         }
         nav {
             display: flex;
-            gap: 18px;
-            margin-bottom: 28px;
-            padding-bottom: 14px;
+            justify-content: center;
+            gap: 22px;
+            padding: 16px 0;
+            margin-bottom: 34px;
             border-bottom: 1px solid var(--line);
         }
         nav a {
             text-decoration: none;
             color: var(--muted);
-            font-weight: 500;
             font-size: 14px;
+            font-weight: 600;
         }
         nav a:hover { color: var(--text); }
-        .hero { margin-bottom: 28px; }
-        .hero h1 { margin: 0 0 8px; font-size: 30px; }
-        .hero p { margin: 0; color: var(--muted); }
+        .hero {
+            margin-bottom: 28px;
+        }
+        .hero h1 {
+            margin: 0 0 8px;
+            font-size: 30px;
+            font-weight: 700;
+        }
+        .hero p {
+            margin: 0;
+            color: var(--muted);
+        }
         .grid {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -62,10 +73,16 @@
             border: 1px solid var(--line);
             border-radius: 14px;
             padding: 18px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
         }
-        .card h3 { margin: 0 0 8px; font-size: 16px; }
-        .card p { margin: 0; color: var(--muted); font-size: 14px; }
+        .card h3 {
+            margin: 0 0 8px;
+            font-size: 16px;
+        }
+        .card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
         .status {
             display: inline-block;
             margin-top: 12px;
@@ -74,28 +91,42 @@
             font-size: 12px;
             font-weight: 600;
         }
-        .done { background: #dcfce7; color: var(--green); }
-        .progress { background: #fef3c7; color: var(--amber); }
-        .planned { background: #f3f4f6; color: var(--gray); }
-        .labs .card { margin-bottom: 14px; }
-        .labs a {
-            display: inline-block;
-            margin-top: 12px;
-            margin-left: 8px;
+        .done {
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--green);
+        }
+        .progress {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--amber);
+        }
+        .planned {
+            background: rgba(107, 114, 128, 0.2);
+            color: var(--gray);
+        }
+        .labs .card {
+            margin-bottom: 14px;
+        }
+        .labs .card a {
             color: var(--accent);
             text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
+            font-size: 13px;
+            font-weight: 600;
         }
-        .side .card + .card { margin-top: 16px; }
+        .side .card {
+            margin-bottom: 16px;
+        }
         .list {
-            margin: 10px 0 0;
+            margin: 0;
             padding-left: 18px;
             color: var(--muted);
             font-size: 14px;
         }
-        @media (max-width: 860px) {
-            .grid, .cards { grid-template-columns: 1fr; }
+        .list li {
+            margin-bottom: 6px;
+        }
+        @media (max-width: 800px) {
+            .grid { grid-template-columns: 1fr; }
+            .cards { grid-template-columns: 1fr; }
         }
     </style>
 </head>
