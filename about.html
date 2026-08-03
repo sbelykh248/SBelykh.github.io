@@ -6,16 +6,15 @@
     <title>About | Shawn Belykh</title>
     <style>
         :root {
-            --bg: #f5f7fb;
-            --card: #ffffff;
-            --text: #152033;
-            --muted: #5f6b7a;
-            --line: #e6ebf2;
-            --accent: #2f6fed;
+            --bg: #0b0f19;
+            --card: #151b28;
+            --text: #e6edf3;
+            --muted: #8b949e;
+            --line: #21262d;
+            --accent: #3b82f6;
+            --soft: #1e2a45;
         }
-
         * { box-sizing: border-box; }
-
         body {
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -23,13 +22,11 @@
             color: var(--text);
             line-height: 1.7;
         }
-
         .page {
             max-width: 860px;
             margin: 0 auto;
             padding: 28px 20px 60px;
         }
-
         nav {
             display: flex;
             justify-content: center;
@@ -38,91 +35,98 @@
             margin-bottom: 28px;
             border-bottom: 1px solid var(--line);
         }
-
         nav a {
             text-decoration: none;
             color: var(--muted);
             font-size: 14px;
             font-weight: 600;
         }
-
         nav a:hover { color: var(--text); }
-
         .card {
             background: var(--card);
             border: 1px solid var(--line);
             border-radius: 18px;
             padding: 34px;
-            box-shadow: 0 8px 24px rgba(16, 24, 40, 0.04);
         }
-
         h1 {
             margin: 0 0 10px;
             font-size: 32px;
+            font-weight: 700;
         }
-
         .lead {
             color: var(--muted);
             font-size: 17px;
             margin-bottom: 20px;
         }
-
         h2 {
-            margin: 26px 0 10px;
+            margin: 28px 0 12px;
             font-size: 18px;
             padding-left: 12px;
             border-left: 3px solid var(--accent);
         }
-
         p { margin: 0 0 14px; }
-
         ul {
             margin: 0 0 8px;
             padding-left: 18px;
         }
-
-        li { margin-bottom: 6px; }
-
+        li { margin-bottom: 6px; color: var(--muted); }
+        li strong { color: var(--text); }
         .facts {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
             margin-top: 10px;
         }
-
         .fact {
-            background: #f8fbff;
-            border: 1px solid #dbe7ff;
+            background: var(--soft);
+            border: 1px solid #2a3a55;
             border-radius: 12px;
             padding: 14px;
         }
-
         .fact strong {
             display: block;
             margin-bottom: 4px;
             font-size: 13px;
-            color: #2b4bb5;
+            color: #93c5fd;
         }
-
         .fact span {
-            font-size: 14px;
+            font-size: 15px;
+            color: var(--text);
         }
-
+        .resume-box {
+            background: var(--soft);
+            border: 1px solid #2a3a55;
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-top: 8px;
+        }
+        .resume-box p {
+            margin: 0 0 8px;
+            color: var(--muted);
+            font-size: 15px;
+        }
+        .resume-box a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .resume-box a:hover {
+            text-decoration: underline;
+        }
         footer {
             margin-top: 28px;
             text-align: center;
         }
-
         footer a {
             color: var(--accent);
             text-decoration: none;
             font-weight: 600;
             font-size: 14px;
         }
-
-        @media (max-width: 700px) {
-            .facts { grid-template-columns: 1fr; }
+        @media (max-width: 600px) {
             h1 { font-size: 28px; }
+            .facts { grid-template-columns: 1fr; }
             .card { padding: 24px; }
         }
     </style>
@@ -174,6 +178,12 @@
             <li>Help Desk / IT Support roles with security exposure</li>
             <li>Path toward SOC and security operations</li>
         </ul>
+
+        <h2>Resume</h2>
+        <div class="resume-box">
+            <p>One-page overview of education, Security+, and hands-on lab experience.</p>
+            <a href="C:\sbelykh248.github.io\Shawn_Belykh_Resume.pdf" target="_blank">Download Resume (PDF)</a>
+        </div>
 
         <h2>Quick facts</h2>
         <div class="facts">
